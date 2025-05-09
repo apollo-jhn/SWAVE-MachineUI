@@ -1,0 +1,23 @@
+{
+  "accounts": [
+    {
+      "student_number": "12345678",
+      "name": "John Doe",
+      "email": "john.doe@example.com",
+      "password": "hashed_password_or_plain_text",
+      "points": 10.5,
+      "bottles": 0,
+      "code": "1234"
+    },
+    {
+      "student_number": "87654321",
+      "name": "Jane Smith",
+      "email": "jane.smith@example.com",
+      "password": "another_password",
+      "points": 3655.026673012059,
+      "bottles": 56,
+      "code": "5678"
+    }
+  ],
+  "transactions": []
+}

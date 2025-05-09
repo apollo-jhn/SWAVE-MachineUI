@@ -1,37 +1,40 @@
-import React from "react";
-import { HashRouter as Router, Routes, Route } from "react-router";
-import { MachineUI_Homepage } from "./machineui/machineui_homepage";
-import { MachineUI_Buy_Option } from "./machineui/machineui_buy_option";
-import { MachineUI_Buy_Pay } from "./machineui/machineui_buy_pay";
-import { MachineUI_Buy_Dispense } from "./machineui/machineui_buy_dispense";
-import { MachineUI_Thankyou } from "./machineui/machineui_thankyou";
-import { MachineUI_Recycle_Bottles } from "./machineui/machineui_recycle_bottles";
-import { MachineUI_Recycle_Redeem } from "./machineui/machineui_recycle_redeem";
-import { Membership_Homepage } from "./membership/membership_homepage";
-import { Membership_Register } from "./membership/membership_register";
-import { Membership_UnderConstruction } from "./membership/membership_undercontruction";
-import { Membership_Dashboard} from "./membership/membership_dashboard";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { MachineUI_Home } from "./machineui/home";
+import { MachineUI_BuyWater } from "./machineui/buywater";
+import { MachineUI_Payment } from "./machineui/payment";
+import { MachineUI_Dispense } from "./machineui/dispense";
+import { MachineUI_Reward } from "./machineui/reward";
+import { MachineUI_Bottle } from "./machineui/bottle";
+import { MachineUI_Redeem } from "./machineui/redeem";
+import { MachineUI_ThankYou } from "./machineui/thankyou";
+import MachineUI_Layout from "./machineui/layout";
+import { Membership_Home } from "./membership/home";
+import { Membership_Register } from "./membership/register";
+import { Membership_Dashboard } from "./membership/dashboard";
 
 function App() {
-    return (
-        <Router>
-            <Routes>
-                {/* Vending Machine User Interface */}
-                <Route path="/machineui" element={<MachineUI_Homepage />} />
-                <Route path="/machineui/buy/option" element={<MachineUI_Buy_Option />} />
-                <Route path="/machineui/buy/pay" element={<MachineUI_Buy_Pay />} />
-                <Route path="/machineui/buy/dispense" element={<MachineUI_Buy_Dispense />} />
-                <Route path="/machineui/recycle/bottle" element={<MachineUI_Recycle_Bottles />} />
-                <Route path="/machineui/recycle/redeem" element={<MachineUI_Recycle_Redeem />} />
-                <Route path="/machineui/thankyou" element={<MachineUI_Thankyou />} />
-                {/* Membership */}
-                <Route path="/membership/homepage" element={<Membership_Homepage />} />
-                <Route path="/membership/register" element={<Membership_Register />} />
-                <Route path="/membership/dashboard/:code" element={<Membership_Dashboard />} />
-                <Route path="/membership/forgot-password" element={<Membership_UnderConstruction />} />
-            </Routes>
-        </Router>
-    );
+  return (
+    <BrowserRouter>
+      <Routes>
+        {/* Registration Page */}
+        <Route path="/" element={<Membership_Home />} />
+        <Route path="/register" element={<Membership_Register />} />
+        <Route path="/dashboard/:code" element={<Membership_Dashboard />} />
+
+        {/* Machine User Interface */}
+        <Route path="/machineui" element={<MachineUI_Layout />}>
+          <Route index element={<MachineUI_Home />} />
+          <Route path="buywater" element={<MachineUI_BuyWater />} />
+          <Route path="buywater/payment" element={<MachineUI_Payment />} />
+          <Route path="buywater/dispense" element={<MachineUI_Dispense />} />
+          <Route path="buywater/reward" element={<MachineUI_Reward />} />
+          <Route path="recycle" element={<MachineUI_Bottle />} />
+          <Route path="recycle/redeem" element={<MachineUI_Redeem />} />
+          <Route path="thankyou" element={<MachineUI_ThankYou />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
+  );
 }
 
 export default App;
